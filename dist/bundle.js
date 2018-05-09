@@ -1,6 +1,6 @@
 /**
  * Author   : Robin Bron <robin@finwo.nl>
- * Build on : Wed May 09 2018 13:38:16 GMT+0200 (CEST)
+ * Build on : Wed May 09 2018 13:39:19 GMT+0200 (CEST)
  * Version  : 0.0.3
  */
 (function(factory) {
