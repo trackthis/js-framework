@@ -1,7 +1,7 @@
 /**
  * Author   : Robin Bron <robin@finwo.nl>
- * Build on : Wed May 09 2018 13:50:35 GMT+0200 (CEST)
- * Version  : 0.0.6
+ * Build on : Wed May 09 2018 13:59:02 GMT+0200 (CEST)
+ * Version  : 0.0.7
  */
 (function(factory) {
   var fw = factory();
@@ -63,7 +63,7 @@ module.exports = function(f) {
   /**
    * f( selector ).animate( parameter, target, duration )
    *
-   * Animate css values. Duration is in milliseconds and has a default of 300
+   * Animate css values. Duration is in milliseconds and has a default of 400
    *
    * @param {string} parameter
    * @param {string} target
@@ -86,7 +86,7 @@ module.exports = function(f) {
         ],
         parameters          = parameter.forEach ? parameter : [parameter];
     parameters.forEach(function (param) {
-      if (supportedParameters.indexOf(param) < 0) return;
+      if (supportedParameters.indexOf(param) < 0) { return; }
       duration = duration || 400;
       object.each(function () {
         var element       = this,
@@ -144,7 +144,7 @@ return module.exports;
     if ( /loaded|complete/.test(document.readyState) ) {
       ready = true;
       var callback;
-      while ( typeof (callback = readyListeners.shift()) !== 'undefined' ) callback();
+      while ( typeof (callback = readyListeners.shift()) !== 'undefined' ) { callback(); }
     } else {
       setTimeout(onDomReady,5);
     }
@@ -195,7 +195,7 @@ return module.exports;
   f.fn.each = function ( callback ) {
     var object = this;
     Object.keys(object).forEach(function ( key ) {
-      if ( Object.keys(f.fn).indexOf(key) >= 0 ) return;
+      if ( Object.keys(f.fn).indexOf(key) >= 0 ) { return; }
       callback.call(object[ key ], object[ key ]);
     });
     return object;

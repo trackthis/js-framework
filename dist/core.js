@@ -1,7 +1,7 @@
 /**
  * Author   : Robin Bron <robin@finwo.nl>
- * Build on : Wed May 09 2018 13:50:34 GMT+0200 (CEST)
- * Version  : 0.0.6
+ * Build on : Wed May 09 2018 13:59:02 GMT+0200 (CEST)
+ * Version  : 0.0.7
  */
 (function(factory) {
   /** global: define */
@@ -34,7 +34,7 @@
     if ( /loaded|complete/.test(document.readyState) ) {
       ready = true;
       var callback;
-      while ( typeof (callback = readyListeners.shift()) !== 'undefined' ) callback();
+      while ( typeof (callback = readyListeners.shift()) !== 'undefined' ) { callback(); }
     } else {
       setTimeout(onDomReady,5);
     }
@@ -85,7 +85,7 @@
   f.fn.each = function ( callback ) {
     var object = this;
     Object.keys(object).forEach(function ( key ) {
-      if ( Object.keys(f.fn).indexOf(key) >= 0 ) return;
+      if ( Object.keys(f.fn).indexOf(key) >= 0 ) { return; }
       callback.call(object[ key ], object[ key ]);
     });
     return object;
