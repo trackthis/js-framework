@@ -1,6 +1,6 @@
 {
   "name": "trackthis-frontend-framework",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple browser framework",
   "main": "dist/framework.js",
   "scripts": {
