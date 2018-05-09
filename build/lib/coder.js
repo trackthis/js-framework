@@ -8,6 +8,7 @@ module.exports = {
     ].join('.');
   },
   decode: function( encodedData ) {
+    /** global: Buffer */
     if ( Buffer.isBuffer(encodedData) ) {
       encodedData = encodedData.toString();
     }

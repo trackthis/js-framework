@@ -1,13 +1,14 @@
 module.exports = function(f) {
   /**
    * f( selector ).animate( parameter, target, duration )
-   *     @param {string} parameter
-   *     @param {string} target
-   *     @param {number} duration
    *
-   *     @return this
+   * Animate css values. Duration is in milliseconds and has a default of 300
    *
-   *     Animate css values. Duration is in milliseconds and has a default of 400
+   * @param {string} parameter
+   * @param {string} target
+   * @param {number} duration
+   *
+   * @return this
    */
   f.fn.animate = function (parameter, target, duration) {
     var object              = this;

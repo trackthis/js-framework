@@ -45,6 +45,7 @@ function startsWith(subject, start) {
 }
 
 function toLines(data) {
+  /** global: Buffer */
   if (Buffer.isBuffer(data)) {
     data = data.toString();
   }
@@ -80,6 +81,7 @@ function process() {
   if (this.extension[cmd]) {
     buffer.unshift(end);
     this.extension[cmd].apply(this, args);
+    return undefined;
   } else {
     this.output.queue(line+eol);
     return setTimeout(process.bind(this), 0);
