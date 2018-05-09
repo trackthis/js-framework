@@ -1,7 +1,7 @@
 /**
  * Author   : Robin Bron <robin@finwo.nl>
- * Build on : Wed May 09 2018 13:27:40 GMT+0200 (CEST)
- * Version  : 0.0.2
+ * Build on : Wed May 09 2018 13:38:16 GMT+0200 (CEST)
+ * Version  : 0.0.3
  */
 (function(factory) {
   var fw = factory();
@@ -18,6 +18,18 @@
 (function() {
 var module = {exports : undefined};
 module.exports = function (f) {
+  /**
+   * $( selector ).toggleClass( className [ , newState ] )
+   *
+   * By default, toggles the class `className` on each of the objects in the list
+   * If the `newState` parameter is given, that defines whether the class should be added (true-ish)
+   *   or removed (false-ish)
+   *
+   * @param  {string}  className
+   * @param  {boolean} newState [optional]
+   *
+   * @return {array}   objectList
+   */
   f.fn.toggleClass = function (className, newState) {
     this.each(function () {
       if (typeof newState !== 'undefined') {
@@ -50,13 +62,14 @@ var module = {exports : undefined};
 module.exports = function(f) {
   /**
    * f( selector ).animate( parameter, target, duration )
-   *     @param {string} parameter
-   *     @param {string} target
-   *     @param {number} duration
    *
-   *     @return this
+   * Animate css values. Duration is in milliseconds and has a default of 300
    *
-   *     Animate css values. Duration is in milliseconds and has a default of 400
+   * @param {string} parameter
+   * @param {string} target
+   * @param {number} duration
+   *
+   * @return this
    */
   f.fn.animate = function (parameter, target, duration) {
     var object              = this;
@@ -118,56 +131,6 @@ return module.exports;
  *    jQuery is useful but rather large, has breaking changes & may already be loaded in an incompatible version. This
  *    framework is supposed to be minimal & stay that way. Only bugfixes may be applied & the API may not differ from
  *    the one described below. Extra functionality can be added through setting $.fn.functionName
- *
- * Usage:
- *
- *    $( selector )
- *        @param  {string|array|object|function} selector
- *        @return {array}                        objectList
- *
- *        string:
- *            Use `selector` as you would with `querySelectorAll`.
- *            Returns an array of elements matching the selector
- *
- *        object:
- *            Convert an object into something usable with the $ functions
- *
- *        function:
- *            Run the function once the document has finished loading (or instantly if it already has)
- *
- *    $.convert( object )
- *        @param  {array|object} object
- *        @return {array}        objectList
- *
- *        Convert an object into something usable with $ functions
- *
- *    $( selector ).each( callback )
- *        @param  {function} callback
- *        @return {array}    objectList
- *
- *        Call the callback for each element in the array, mapped to the `this` variable
- *        Returns the original object list
- *
- *    $( selector ).find( selector )
- *        @param  {string} selector
- *        @return {array}  objectList
- *
- *        Essentially the same as `$( selector )` with a string parameter, but uses the objects in the list
- *            as top-most parents instead of the whole document.
- *
- *    $( selector ).remove()
- *
- *        Remove the items in the object list from the view.
- *        Calls this.parentNode.removeChild(this) on each of the objects
- *
- *    $( selector ).toggleClass( className [ , newState ] )
- *        @param  {string}  className
- *        @param  {boolean} forcesState [optional]
- *        @return {array}   objectList
- *
- *        By default, toggles the class `className` on each of the objects in the list
- *        If the `newState` parameter is given, that defines whether the class should be added (true-ish)
- *            or removed (false-ish)
  */
 (function () {
   // IE fix
@@ -186,6 +149,23 @@ return module.exports;
       setTimeout(onDomReady,5);
     }
   },0);
+  /**
+   * $( selector )
+   *
+   * string:
+   *   Use `selector` as you would with `querySelectorAll`.
+   *   Returns an array of elements matching the selector
+   *
+   * object:
+   *   Convert an object into something usable with the $ functions
+   *
+   * function:
+   *   Run the function once the document has finished loading (or instantly if it already has)
+   *
+   * @param  {string|array|object|function} selector
+   *
+   * @return {array}                        objectList
+   */
   var f = function ( selector ) {
     if ( typeof selector === 'string' ) {
       return f.convert(document.querySelectorAll(selector));
@@ -202,6 +182,16 @@ return module.exports;
     }
   };
   f.fn = {};
+  /**
+   * $( selector ).each( callback )
+   *
+   * Call the callback for each element in the array, mapped to the `this` variable
+   * Returns the original object list
+   *
+   * @param  {function} callback
+   *
+   * @return {array}    objectList
+   */
   f.fn.each = function ( callback ) {
     var object = this;
     Object.keys(object).forEach(function ( key ) {
@@ -210,6 +200,16 @@ return module.exports;
     });
     return object;
   };
+  /**
+   * $( selector ).find( selector )
+   *
+   * Essentially the same as `$( selector )` with a string parameter, but uses the objects in the list
+   *   as top-most parents instead of the whole document.
+   *
+   * @param  {string} selector
+   *
+   * @return {array}  objectList
+   */
   f.fn.find = function ( selector ) {
     var newList = [];
     if ( typeof selector === 'string' ) {
@@ -221,11 +221,26 @@ return module.exports;
     }
     return f(newList);
   };
+  /**
+   * $( selector ).remove()
+   *
+   * Remove the items in the object list from the view.
+   * Calls this.parentNode.removeChild(this) on each of the objects
+   */
   f.fn.remove = function () {
     this.each(function () {
       this.parentNode.removeChild(this);
     });
   };
+  /**
+   * $.convert( object )
+   *
+   * Convert an object into something usable with $ functions
+   *
+   * @param  {array|object} object
+   *
+   * @return {array}        objectList
+   */
   f.convert = function ( object ) {
     if ( !object.forEach ) {
       object = [ object ];
