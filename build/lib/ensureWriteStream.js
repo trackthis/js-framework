@@ -14,4 +14,5 @@ module.exports = function ensureWriteStream(file, callback) {
     if (err) { return callback(err); }
     return callback(undefined, fs.createWriteStream(file));
   });
+  return undefined;
 };
