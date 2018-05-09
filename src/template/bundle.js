@@ -6,8 +6,10 @@
     define([], function() {
       return fw;
     });
+  } else if ('undefined' !== typeof module && 'exports' in module) {
+    module.exports = fw;
   } else if ('undefined' !== typeof window) {
-    window.fw = factory();
+    window.fw = fw;
   }
 
   // ---[ module plugin/toggleClass.js ]---(fw);

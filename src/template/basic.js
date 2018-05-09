@@ -2,6 +2,8 @@
   /** global: define */
   if (('function' === typeof define) && define.amd) {
     define([], factory);
+  } else if ('undefined' !== typeof module && 'exports' in module) {
+    module.exports = factory();
   } else if ('undefined' !== typeof window) {
     window.fw = factory();
   }
