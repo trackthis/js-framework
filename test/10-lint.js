@@ -78,7 +78,7 @@ co(function* () {
         }
 
         // Success!
-        done();
+        return done();
       });
     }));
   });
