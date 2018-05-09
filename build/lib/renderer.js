@@ -55,6 +55,7 @@ function toLines(data) {
 function process() {
   var buffer = this.buffer,
       line   = buffer.shift();
+  // console.log(('0000'+buffer.length).substr(-4), 'line:', line);
   if (!line) {
     if (!buffer.length) {
       return this.output.queue(null);
