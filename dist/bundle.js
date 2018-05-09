@@ -1,7 +1,7 @@
 /**
  * Author   : Robin Bron <robin@finwo.nl>
- * Build on : Wed May 09 2018 13:22:39 GMT+0200 (CEST)
- * Version  : 0.0.1
+ * Build on : Wed May 09 2018 13:27:40 GMT+0200 (CEST)
+ * Version  : 0.0.2
  */
 (function(factory) {
   var fw = factory();
@@ -10,8 +10,10 @@
     define([], function() {
       return fw;
     });
+  } else if ('undefined' !== typeof module && 'exports' in module) {
+    module.exports = fw;
   } else if ('undefined' !== typeof window) {
-    window.fw = factory();
+    window.fw = fw;
   }
 (function() {
 var module = {exports : undefined};
