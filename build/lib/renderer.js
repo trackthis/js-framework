@@ -12,10 +12,7 @@ var defaultOptions = {
           fullPath = path.join(this.docroot, filename);
       fs.readFile(fullPath,function(err, data) {
         if ( data ) {
-          var tmp = toLines(data);
-          while(tmp.length) {
-            self.buffer.unshift(tmp.pop());
-          }
+          Array.prototype.unshift.apply(self.buffer, toLines(data));
         }
         setTimeout(process.bind(self), 0);
       });
