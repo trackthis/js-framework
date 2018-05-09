@@ -99,5 +99,7 @@ var renderer = module.exports = function (options) {
       options.output = this;
       setTimeout(process.bind(options), 0);
     }
+  }, function end(){
+    // Purposely do nothing, the processor decides when we're done
   });
 };
