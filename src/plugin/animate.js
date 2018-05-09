@@ -2,7 +2,7 @@ module.exports = function(f) {
   /**
    * f( selector ).animate( parameter, target, duration )
    *
-   * Animate css values. Duration is in milliseconds and has a default of 300
+   * Animate css values. Duration is in milliseconds and has a default of 400
    *
    * @param {string} parameter
    * @param {string} target
@@ -25,7 +25,7 @@ module.exports = function(f) {
         ],
         parameters          = parameter.forEach ? parameter : [parameter];
     parameters.forEach(function (param) {
-      if (supportedParameters.indexOf(param) < 0) return;
+      if (supportedParameters.indexOf(param) < 0) { return; }
       duration = duration || 400;
       object.each(function () {
         var element       = this,
