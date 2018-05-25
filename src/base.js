@@ -92,10 +92,12 @@
    * @return {array}    objectList
    */
   f.fn.filter = function( callback ) {
-    var out = [];
-    this.each(function(element) {
-      if ( callback.call(element,element) ) {
-        out.push(element);
+    var self = this,
+        out  = [];
+    Object.keys(self).forEach(function ( key ) {
+      if ( Object.keys(f.fn).indexOf(key) >= 0 ) { return; }
+      if ( callback.call(self[ key ],self[ key ]) ) {
+        out.push(self[ key ]);
       }
     });
     return f.convert(out);
