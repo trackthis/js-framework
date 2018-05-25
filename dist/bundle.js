@@ -1,7 +1,7 @@
 /**
  * Author   : Robin Bron <robin@finwo.nl>
- * Build on : Wed May 09 2018 14:21:29 GMT+0200 (CEST)
- * Version  : 0.0.8
+ * Build on : Fri May 25 2018 11:21:34 GMT+0200 (CEST)
+ * Version  : 0.1.1
  */
 (function(factory) {
   var fw = factory();
@@ -199,6 +199,21 @@ return module.exports;
       callback.call(object[ key ], object[ key ]);
     });
     return object;
+  };
+  /**
+   * $( selector ).filter( callback )
+   *
+   * Call the callback for each elements & retains the element in the list if a true-like value is returned.
+   * Returns an fw object with the retained elements.
+   *
+   * @param  {function} callback
+   *
+   * @return {array}    objectList
+   */
+  f.fn.filter = function( callback ) {
+    return f.convert(this.filter(function(element) {
+      return callback.call(element,element);
+    }));
   };
   /**
    * $( selector ).find( selector )
