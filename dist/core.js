@@ -1,7 +1,7 @@
 /**
  * Author   : Robin Bron <robin@finwo.nl>
- * Build on : Fri May 25 2018 11:59:44 GMT+0200 (CEST)
- * Version  : 0.2.0
+ * Build on : Fri May 25 2018 14:07:28 GMT+0200 (CEST)
+ * Version  : 0.2.1
  */
 (function(factory) {
   /** global: define */
