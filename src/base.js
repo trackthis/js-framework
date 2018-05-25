@@ -92,9 +92,13 @@
    * @return {array}    objectList
    */
   f.fn.filter = function( callback ) {
-    return f.convert(this.filter(function(element) {
-      return callback.call(element,element);
-    }));
+    var out = [];
+    this.each(function(element) {
+      if ( callback.call(element,element) ) {
+        out.push(element);
+      }
+    });
+    return f.convert(out);
   };
 
   /**
