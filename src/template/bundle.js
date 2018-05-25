@@ -15,6 +15,7 @@
   // ---[ module plugin/toggleClass.js ]---(fw);
   // ---[ module plugin/animate.js ]---(fw);
   // ---[ module plugin/events.js ]---(fw);
+  // ---[ module plugin/style.js ]---(fw);
 
 })(function() {
   var module = {exports : undefined};
