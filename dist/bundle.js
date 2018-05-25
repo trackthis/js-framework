@@ -1,7 +1,7 @@
 /**
  * Author   : Robin Bron <robin@finwo.nl>
- * Build on : Fri May 25 2018 14:07:29 GMT+0200 (CEST)
- * Version  : 0.2.1
+ * Build on : Fri May 25 2018 14:30:13 GMT+0200 (CEST)
+ * Version  : 0.3.0
  */
 (function(factory) {
   var fw = factory();
@@ -166,6 +166,37 @@ module.exports = function(f) {
       }
     });
     return this;
+  };
+};
+return module.exports;
+})()
+(fw);
+(function() {
+var module = {exports : undefined};
+module.exports = function(f) {
+  /**
+   * f( selector ).style( parameter, target, duration )
+   *     @param {object} parameters
+   *     @param {string} [target]
+   *
+   *     @return {object} this
+   *
+   *     Set styling properties
+   */
+  f.fn.style = function ( parameters ) {
+    var args = Array.prototype.slice.call(arguments),
+        obj  = this;
+    if ( ('object' !== typeof parameters) && args.length === 2 ) {
+      var opts = {};
+      opts[args[0]] = args[1];
+      return f.fn.style.call(this,opts);
+    }
+    obj.each(function(el) {
+      Object.keys(parameters).forEach(function(param) {
+        el.style[param] = parameters[param];
+      });
+    });
+    return obj;
   };
 };
 return module.exports;
