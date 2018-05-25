@@ -82,6 +82,22 @@
   };
 
   /**
+   * $( selector ).filter( callback )
+   *
+   * Call the callback for each elements & retains the element in the list if a true-like value is returned.
+   * Returns an fw object with the retained elements.
+   *
+   * @param  {function} callback
+   *
+   * @return {array}    objectList
+   */
+  f.fn.filter = function( callback ) {
+    return f.convert(this.filter(function(element) {
+      return callback.call(element,element);
+    }));
+  };
+
+  /**
    * $( selector ).find( selector )
    *
    * Essentially the same as `$( selector )` with a string parameter, but uses the objects in the list
