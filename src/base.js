@@ -142,6 +142,8 @@
    *
    * Convert an object into something usable with $ functions
    *
+   * TODO: make f.fn a prototype instead of attaching functions
+   *
    * @param  {array|object} object
    *
    * @return {array}        objectList
